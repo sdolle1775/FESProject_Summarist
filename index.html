@@ -9,6 +9,16 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      (function restoreGitHubPagesRoute() {
+        var redirect = sessionStorage.getItem("summarist:redirect");
+        if (redirect) {
+          sessionStorage.removeItem("summarist:redirect");
+          var target = new URL(redirect);
+          history.replaceState(null, "", target.pathname + target.search + target.hash);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

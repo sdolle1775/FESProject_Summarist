@@ -32,7 +32,7 @@ export function ChoosePlanPage() {
           <div className="plan-copy">
             <h1>Get unlimited access to many amazing books to read</h1>
             <p>Turn ordinary moments into amazing learning opportunities</p>
-            <img src="/assets/pricing-top.png" alt="A person learning with Summarist" />
+            <img src={`${import.meta.env.BASE_URL}assets/pricing-top.png`} alt="A person learning with Summarist" />
           </div>
           <div className="plan-benefits">
             <div><BookOpenText /><span>Key ideas in few min with many books to read</span></div>

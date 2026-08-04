@@ -23,7 +23,7 @@ export function Sidebar() {
   return (
     <aside className="sidebar">
       <NavLink className="sidebar-logo" to="/for-you" aria-label="Summarist home">
-        <img src="/assets/logo.png" alt="Summarist" />
+        <img src={`${import.meta.env.BASE_URL}assets/logo.png`} alt="Summarist" />
       </NavLink>
       <nav className="sidebar-nav" aria-label="Main navigation">
         <NavLink to="/for-you"><House size={22} /><span>For you</span></NavLink>

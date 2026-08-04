@@ -34,7 +34,7 @@ export function HomePage() {
     <div className="home-page">
       <nav className="home-nav">
         <div className="home-row home-nav-inner">
-          <img src="/assets/logo.png" alt="Summarist" />
+          <img src={`${import.meta.env.BASE_URL}assets/logo.png`} alt="Summarist" />
           <ul>
             <li><button onClick={() => openAuth("login")}>Login</button></li>
             <li className="not-allowed">About</li>
@@ -51,7 +51,7 @@ export function HomePage() {
             <p>Great summaries for busy people,<br />individuals who barely have time to read,<br />and even people who don’t like to read.</p>
             <button className="primary-button home-cta" onClick={() => openAuth("login")}>Login</button>
           </div>
-          <figure><img src="/assets/landing.png" alt="A reader reviewing a book summary" /></figure>
+          <figure><img src={`${import.meta.env.BASE_URL}assets/landing.png`} alt="A reader reviewing a book summary" /></figure>
         </div>
       </section>
 

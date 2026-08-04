@@ -1,5 +1,6 @@
 import {
   Bookmark,
+  BookmarkCheck,
   BookOpen,
   Clock3,
   Headphones,
@@ -12,12 +13,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext";
 import { bookDuration, getBook } from "../api";
 import { Skeleton } from "../components/Skeleton";
+import { useLibrary } from "../library/LibraryContext";
 import type { Book } from "../types";
 
 export function BookPage() {
   const { id = "" } = useParams();
   const navigate = useNavigate();
   const { user, openAuth } = useAuth();
+  const { isSaved, toggleBook } = useLibrary();
   const [book, setBook] = useState<Book | null>(null);
   const [error, setError] = useState("");
 
@@ -47,6 +50,14 @@ export function BookPage() {
     navigate(`/player/${book.id}`);
   };
 
+  const toggleLibrary = () => {
+    if (!user) {
+      openAuth("login");
+      return;
+    }
+    if (book) toggleBook(book);
+  };
+
   if (error) return <div className="page-error">{error}</div>;
   if (!book) {
     return (
@@ -56,6 +67,8 @@ export function BookPage() {
       </div>
     );
   }
+
+  const saved = isSaved(book.id);
 
   return (
     <article className="content-page book-detail-page">
@@ -74,8 +87,9 @@ export function BookPage() {
             <button className="dark-button" onClick={openBook}><BookOpen size={18} />Read</button>
             <button className="dark-button" onClick={openBook}><Headphones size={18} />Listen</button>
           </div>
-          <button className="library-action" onClick={() => !user ? openAuth("login") : undefined}>
-            <Bookmark size={18} />Add title to My Library
+          <button className={`library-action ${saved ? "saved" : ""}`} onClick={toggleLibrary} aria-pressed={saved}>
+            {saved ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
+            {saved ? "Saved in My Library" : "Add title to My Library"}
           </button>
         </div>
         <figure className="book-detail-cover"><img src={book.imageLink} alt={`Cover of ${book.title}`} /></figure>

@@ -10,7 +10,7 @@ export function SettingsPage() {
       <h1>Settings</h1>
       {!user ? (
         <div className="settings-logged-out">
-          <img src="/assets/login.png" alt="Sign in securely to your account" />
+          <img src={`${import.meta.env.BASE_URL}assets/login.png`} alt="Sign in securely to your account" />
           <h2>Log in to your account to see your details.</h2>
           <button className="primary-button settings-login" onClick={() => openAuth("login")}>Login</button>
         </div>
