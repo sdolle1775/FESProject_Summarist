@@ -1,6 +1,6 @@
 # Summarist
 
-A complete React + TypeScript implementation of the Frontend Simplified Summarist virtual internship. The project follows the supplied v2 specification and the live reference application while intentionally excluding features marked optional.
+A complete React + TypeScript implementation of the Frontend Simplified Summarist virtual internship
 
 ## Included
 
